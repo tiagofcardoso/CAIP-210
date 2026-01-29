@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Site de preparação para o exame CertNexus AIP-210 - Certified AI Practitioner">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="CAIP-210">
+    <title>CAIP-210 Exam Prep | Quiz de Preparação</title>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512x512.png">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <span class="logo-icon">🎯</span>
+                <h1>CAIP-210</h1>
+                <span class="subtitle">Exam Prep</span>
+            </div>
+
+            <!-- Hamburger Menu Button (Mobile Only) -->
+            <button id="mobile-menu-btn" class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Language Toggle -->
+            <!-- Moved inside nav menu for mobile -->
+
+            <nav class="nav-menu" id="nav-menu">
+                <button id="language-toggle" class="language-toggle" onclick="toggleLanguage()" title="Switch language">
+                    <span class="lang-text">PT</span>
+                </button>
+
+                <button class="nav-item active" data-view="home">
+                    <span class="nav-icon">🏠</span>
+                    <span data-i18n="nav.home">Início</span>
+                </button>
+                <button class="nav-item" data-view="practice">
+                    <span class="nav-icon">📝</span>
+                    <span data-i18n="nav.practice">Modo Prática</span>
+                </button>
+                <button class="nav-item" data-view="exam">
+                    <span class="nav-icon">⏱️</span>
+                    <span data-i18n="nav.exam">Simulado</span>
+                </button>
+                <button class="nav-item" data-view="study">
+                    <span class="nav-icon">📖</span>
+                    <span data-i18n="nav.study">Estudar</span>
+                </button>
+                <button class="nav-item" data-view="topics">
+                    <span class="nav-icon">📚</span>
+                    <span data-i18n="nav.topics">Por Tópicos</span>
+                </button>
+                <button class="nav-item" data-view="stats">
+                    <span class="nav-icon">📊</span>
+                    <span data-i18n="nav.stats">Estatísticas</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="progress-summary">
+                    <span data-i18n="nav.progress">Progresso Geral</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="overall-progress"></div>
+                    </div>
+                    <span class="progress-text" id="progress-text">0%</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Home View -->
+            <section id="home-view" class="view active">
+                <div class="hero">
+                    <h2>Bem-vindo ao<br><span class="gradient-text">CAIP-210 Exam Prep</span></h2>
+                    <p>Prepare-se para a certificação CertNexus Certified AI Practitioner com questões baseadas no
+                        material oficial do curso.</p>
+
+                    <!-- Question Counter Badge -->
+                    <div class="question-counter-home">
+                        <div class="counter-badge">
+                            <span class="counter-icon">📊</span>
+                            <div class="counter-info">
+                                <span class="counter-value-home" id="total-questions-count-home">175</span>
+                                <span class="counter-label-home" data-i18n="nav.totalQuestions">Total de Questões</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quick-actions">
+                        <button class="action-btn primary" onclick="startQuickPractice()">
+                            <span class="btn-icon">🚀</span>
+                            <span>Prática Rápida</span>
+                            <span class="btn-desc">10 questões aleatórias</span>
+                        </button>
+                        <button class="action-btn secondary" onclick="startExam()">
+                            <span class="btn-icon">📋</span>
+                            <span>Simulado Completo</span>
+                            <span class="btn-desc">60 questões • 90 min</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="domain-cards">
+                    <h3>Domínios do Exame</h3>
+                    <div class="cards-grid">
+                        <div class="domain-card" onclick="startTopicQuiz(1)">
+                            <div class="card-header">
+                                <span class="card-icon">🧠</span>
+                                <span class="weight">26%</span>
+                            </div>
+                            <h4>AI & ML Fundamentals</h4>
+                            <p>Conceitos de AI, machine learning, problema formulation e stakeholders</p>
+                            <div class="card-progress">
+                                <div class="mini-progress">
+                                    <div class="mini-fill" data-domain="1"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="domain-card" onclick="startTopicQuiz(2)">
+                            <div class="card-header">
+                                <span class="card-icon">🔧</span>
+                                <span class="weight">20%</span>
+                            </div>
+                            <h4>Data Preparation</h4>
+                            <p>Coleta, transformação, feature engineering e preprocessing</p>
+                            <div class="card-progress">
+                                <div class="mini-progress">
+                                    <div class="mini-fill" data-domain="2"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="domain-card" onclick="startTopicQuiz(3)">
+                            <div class="card-header">
+                                <span class="card-icon">⚙️</span>
+                                <span class="weight">24%</span>
+                            </div>
+                            <h4>Training & Tuning</h4>
+                            <p>Treinamento, avaliação, algoritmos de ML e neural networks</p>
+                            <div class="card-progress">
+                                <div class="mini-progress">
+                                    <div class="mini-fill" data-domain="3"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="domain-card" onclick="startTopicQuiz(4)">
+                            <div class="card-header">
+                                <span class="card-icon">🚀</span>
+                                <span class="weight">30%</span>
+                            </div>
+                            <h4>MLOps & Production</h4>
+                            <p>Deploy, automação, pipelines e manutenção de modelos</p>
+                            <div class="card-progress">
+                                <div class="mini-progress">
+                                    <div class="mini-fill" data-domain="4"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quiz View -->
+            <section id="quiz-view" class="view">
+                <div class="quiz-header">
+                    <div class="quiz-info">
+                        <span class="quiz-type" id="quiz-type">Modo Prática</span>
+                        <span class="quiz-domain" id="quiz-domain"></span>
+                    </div>
+                    <div class="quiz-controls">
+                        <div class="timer hidden" id="timer">
+                            <span class="timer-icon">⏱️</span>
+                            <span id="timer-display">90:00</span>
+                        </div>
+                        <button class="quit-btn" onclick="quitQuiz()">✕ Sair</button>
+                    </div>
+                </div>
+
+                <div class="quiz-progress">
+                    <div class="progress-info">
+                        <span>Questão <span id="current-question">1</span> de <span
+                                id="total-questions">10</span></span>
+                        <span id="score-display">Acertos: 0</span>
+                    </div>
+                    <div class="progress-bar quiz-bar">
+                        <div class="progress-fill" id="quiz-progress"></div>
+                    </div>
+                </div>
+
+                <div class="question-container">
+                    <div class="question-card">
+                        <div class="question-number" id="question-number">Q1</div>
+                        <p class="question-text" id="question-text"></p>
+                    </div>
+
+                    <div class="options-container" id="options-container">
+                        <!-- Options will be populated by JS -->
+                    </div>
+
+                    <div class="feedback-container hidden" id="feedback-container">
+                        <div class="feedback-card" id="feedback-card">
+                            <div class="feedback-header">
+                                <span class="feedback-icon" id="feedback-icon"></span>
+                                <span class="feedback-text" id="feedback-text"></span>
+                            </div>
+                            <div class="explanation" id="explanation"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quiz-navigation">
+                    <button class="nav-btn prev" id="prev-btn" onclick="prevQuestion()" disabled>
+                        ← Anterior
+                    </button>
+                    <button class="nav-btn next" id="next-btn" onclick="nextQuestion()">
+                        Próxima →
+                    </button>
+                    <button class="nav-btn finish hidden" id="finish-btn" onclick="finishQuiz()">
+                        Finalizar ✓
+                    </button>
+                </div>
+            </section>
+
+            <!-- Results View -->
+            <section id="results-view" class="view">
+                <div class="results-container">
+                    <div class="results-header">
+                        <h2>Resultado do Quiz</h2>
+                        <div class="score-circle" id="score-circle">
+                            <span class="score-value" id="final-score">0%</span>
+                            <span class="score-label">Score</span>
+                        </div>
+                    </div>
+
+                    <div class="results-stats">
+                        <div class="stat-item correct">
+                            <span class="stat-value" id="correct-count">0</span>
+                            <span class="stat-label">Corretas</span>
+                        </div>
+                        <div class="stat-item incorrect">
+                            <span class="stat-value" id="incorrect-count">0</span>
+                            <span class="stat-label">Incorretas</span>
+                        </div>
+                        <div class="stat-item time">
+                            <span class="stat-value" id="time-spent">0:00</span>
+                            <span class="stat-label">Tempo</span>
+                        </div>
+                    </div>
+
+                    <div class="results-message" id="results-message"></div>
+
+                    <div class="domain-performance">
+                        <h3>Desempenho por Domínio</h3>
+                        <div id="domain-stats"></div>
+                    </div>
+
+                    <div class="results-actions">
+                        <button class="action-btn primary" onclick="reviewAnswers()">
+                            📖 Revisar Respostas
+                        </button>
+                        <button class="action-btn secondary" onclick="goHome()">
+                            🏠 Voltar ao Início
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Study View -->
+            <section id="study-view" class="view">
+                <div class="study-header">
+                    <button class="back-btn" onclick="showStudyDomains()" id="study-back-btn" style="display:none;">
+                        ← Voltar aos Domínios
+                    </button>
+                    <h2 id="study-title">Material de Estudo</h2>
+                    <p id="study-subtitle">Escolha um domínio para estudar conceitos, exemplos e casos reais</p>
+                </div>
+
+                <div class="study-domains" id="study-domains">
+                    <!-- Domain cards populated by JS -->
+                </div>
+
+                <div class="study-content hidden" id="study-content">
+                    <!-- Topic content populated by JS -->
+                </div>
+            </section>
+
+            <!-- Topics View -->
+            <section id="topics-view" class="view">
+                <h2>Praticar por Tópicos</h2>
+                <div class="topics-list" id="topics-list">
+                    <!-- Will be populated by JS -->
+                </div>
+            </section>
+
+            <!-- Stats View -->
+            <section id="stats-view" class="view">
+                <h2>Suas Estatísticas</h2>
+                <div class="stats-container">
+                    <div class="stats-overview">
+                        <div class="overview-card">
+                            <span class="overview-value" id="total-answered">0</span>
+                            <span class="overview-label">Questões Respondidas</span>
+                        </div>
+                        <div class="overview-card">
+                            <span class="overview-value" id="avg-score">0%</span>
+                            <span class="overview-label">Média de Acertos</span>
+                        </div>
+                        <div class="overview-card">
+                            <span class="overview-value" id="study-time">0h</span>
+                            <span class="overview-label">Tempo de Estudo</span>
+                        </div>
+                    </div>
+
+                    <div class="domain-breakdown">
+                        <h3>Desempenho por Domínio</h3>
+                        <div id="stats-domains"></div>
+                    </div>
+
+                    <button class="action-btn danger" onclick="resetStats()">
+                        🗑️ Resetar Estatísticas
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="i18n.js"></script>
+    <script src="questions.js"></script>
+    <script src="questions-extra.js"></script>
+    <script src="questions-extra2.js"></script>
+    <script src="questions-extra3.js"></script>
+    <script src="questions-extra4.js"></script>
+    <script src="questions-en.js"></script>
+    <script src="questions-extra-en.js"></script>
+    <script src="questions-extra2-en.js"></script>
+    <script src="questions-extra3-en.js"></script>
+    <script src="questions-extra4-en.js"></script>
+    <script src="study-content.js"></script>
+    <script src="extra-content-1.js"></script>
+    <script src="extra-content-2.js"></script>
+    <script src="extra-content-3.js"></script>
+    <script src="glossary.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Initialize language system after all scripts are loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            initLanguageSystem();
+
+            // Update question counter dynamically
+            function updateQuestionCounter() {
+                updateQuestionsLanguage(); // Ensure questions are loaded
+                const totalQuestions = QUESTIONS ? QUESTIONS.length : 175;
+                const counterElement = document.getElementById('total-questions-count-home');
+                if (counterElement) {
+                    counterElement.textContent = totalQuestions;
+                }
+            }
+
+            // Update counter on load and language change
+            updateQuestionCounter();
+
+            // Override toggleLanguage to also update counter
+            const originalToggleLanguage = window.toggleLanguage;
+            window.toggleLanguage = function () {
+                originalToggleLanguage();
+                setTimeout(updateQuestionCounter, 100); // Small delay to ensure questions are updated
+            };
+        });
+
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(function (registration) {
+                        console.log('ServiceWorker registered successfully:', registration.scope);
+                    })
+                    .catch(function (error) {
+                        console.log('ServiceWorker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+
+</html>
