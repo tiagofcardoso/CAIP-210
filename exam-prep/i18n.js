@@ -85,6 +85,31 @@ const TRANSLATIONS = {
     'general.save': { pt: 'Salvar', en: 'Save' },
     'general.close': { pt: 'Fechar', en: 'Close' },
 
+    // AI Assistant
+    'ai.button': { pt: '🤖 Perguntar à IA', en: '🤖 Ask AI' },
+    'ai.title': { pt: 'Assistente de Estudo IA', en: 'AI Study Assistant' },
+    'ai.context': { pt: 'Contexto', en: 'Context' },
+    'ai.greeting': {
+        pt: 'Olá! Vi que você errou essa questão. Como posso ajudar você a entender melhor?',
+        en: 'Hi! I saw you got this question wrong. How can I help you understand it better?'
+    },
+    'ai.placeholder': {
+        pt: 'Digite ou fale sua dúvida...',
+        en: 'Type or speak your question...'
+    },
+    'ai.autoSpeak': { pt: 'Auto-falar', en: 'Auto-speak' },
+    'ai.recording': { pt: 'Gravando...', en: 'Recording...' },
+    'ai.thinking': { pt: 'Pensando...', en: 'Thinking...' },
+    'ai.error': { pt: 'Desculpe, ocorreu um erro', en: 'Sorry, an error occurred' },
+    'ai.apiKeyMissing': {
+        pt: 'Configure sua chave Gemini API em ai-assistant.js',
+        en: 'Configure your Gemini API key in ai-assistant.js'
+    },
+    'ai.rateLimit': {
+        pt: 'Limite de requisições atingido. Aguarde um momento.',
+        en: 'Rate limit exceeded. Please wait a moment.'
+    },
+
     // Language toggle
     'lang.toggle': { pt: 'EN', en: 'PT' },
     'lang.current': { pt: '🇧🇷 Português', en: '🇺🇸 English' },

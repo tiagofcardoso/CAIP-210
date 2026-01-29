@@ -248,6 +248,33 @@ function showFeedback(isCorrect) {
     document.getElementById('feedback-icon').textContent = isCorrect ? '✓' : '✗';
     document.getElementById('feedback-text').textContent = isCorrect ? 'Correto!' : 'Incorreto';
     document.getElementById('explanation').textContent = question.explanation;
+
+    // Add AI Assistant button if answer is incorrect
+    const explanationEl = document.getElementById('explanation');
+    const existingAIBtn = document.getElementById('ai-assistant-btn');
+
+    if (!isCorrect && !existingAIBtn) {
+        const aiButton = document.createElement('button');
+        aiButton.id = 'ai-assistant-btn';
+        aiButton.className = 'ai-assistant-btn';
+        aiButton.innerHTML = `
+            <span class="ai-icon">🤖</span>
+            <span data-i18n="ai.button">Perguntar à IA</span>
+            <span class="ai-badge">BETA</span>
+        `;
+        aiButton.onclick = function () {
+            openAIChat({
+                question: question.question,
+                userAnswer: question.options[state.selectedOption],
+                correctAnswer: question.options[question.correct],
+                explanation: question.explanation
+            });
+        };
+        explanationEl.parentNode.appendChild(aiButton);
+    } else if (isCorrect && existingAIBtn) {
+        // Remove AI button if answer is correct
+        existingAIBtn.remove();
+    }
 }
 
 function nextQuestion() {

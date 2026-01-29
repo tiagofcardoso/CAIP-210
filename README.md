@@ -30,6 +30,7 @@
 ### 🌟 Destaques
 
 - ✅ **175 questões** de alta qualidade baseadas no material oficial
+- ✅ **Assistente AI (NOVO)** - Chat multimodal com voz para explicar erros
 - ✅ **Simulado completo** com 60 questões e timer de 90 minutos
 - ✅ **Modo prática** com 10 questões aleatórias
 - ✅ **Estudo por domínio** para focar em áreas específicas
@@ -41,6 +42,12 @@
 ---
 
 ## ✨ Características
+
+### 🤖 Assistente de Estudo IA (NOVO)
+- **Chat Interativo:** Tire dúvidas sobre questões erradas diretamente com a IA
+- **Multimodal:** Interaja por texto ou **voz** (microfone)
+- **Ouvir Respostas:** A IA lê as explicações para você
+- **Contexto Inteligente:** A IA sabe exatamente qual questão você errou e porquê
 
 ### 🎯 Modos de Estudo
 
@@ -116,6 +123,10 @@
 - **JavaScript (Vanilla)** - Lógica da aplicação
 - **PWA** - Progressive Web App
 
+### AI & Voice
+- **Gemini 2.5 Flash Lite** - IA rápida e econômica
+- **Web Speech API** - Reconhecimento e síntese de voz nativos
+
 ### Design
 - **Glassmorphism** - Efeitos de vidro modernos
 - **Gradientes** - Paleta de cores vibrante
@@ -182,17 +193,18 @@ python -m http.server 8000
 1. Leia o **Material de Estudo** de cada domínio
 2. Faça **Prática Rápida** por domínio (10 questões)
 3. Revise **explicações** das questões erradas
+4. Use o **Assistente IA** para tirar dúvidas
 
 #### Semana 3: Consolidação
-4. **Prática Rápida mista** (todos os domínios)
-5. Foque nos **domínios mais fracos** (veja Estatísticas)
-6. Estude **conteúdo adicional** e glossário
+5. **Prática Rápida mista** (todos os domínios)
+6. Foque nos **domínios mais fracos** (veja Estatísticas)
+7. Estude **conteúdo adicional** e glossário
 
 #### Semana 4: Simulação
-7. **Simulado Completo #1** (60 questões)
-8. Analise erros e estude gaps
-9. **Simulado Completo #2** (60 questões diferentes)
-10. **Simulado Completo #3** (se necessário)
+8. **Simulado Completo #1** (60 questões)
+9. Analise erros e estude gaps
+10. **Simulado Completo #2** (60 questões diferentes)
+11. **Simulado Completo #3** (se necessário)
 
 ### Meta de Aprovação
 
@@ -211,6 +223,11 @@ CAIP-210/
 │   ├── styles.css             # Estilos globais
 │   ├── app.js                 # Lógica da aplicação
 │   ├── i18n.js                # Sistema de internacionalização
+│   │
+│   ├── ai-assistant.js        # Lógica do chat IA
+│   ├── ai-voice.js            # Serviços de voz
+│   ├── ai-chat-ui.js          # Interface do chat
+│   ├── ai-chat-styles.css     # Estilos do chat
 │   │
 │   ├── questions.js           # 60 questões base (PT)
 │   ├── questions-extra.js     # 40 questões extras (PT)
@@ -388,15 +405,6 @@ Este projeto é licenciado sob a **MIT License** - veja o arquivo [LICENSE](LICE
 
 ---
 
-## 👨‍💻 Autor
-
-**Tiago**
-
-- 🌐 Website: [barbershop-toni.web.app](https://barbershop-toni.web.app)
-- 📧 Email: [seu-email@exemplo.com](mailto:seu-email@exemplo.com)
-
----
-
 ## 🙏 Agradecimentos
 
 - **CertNexus** - Pelo material oficial do curso CAIP-210
@@ -405,17 +413,13 @@ Este projeto é licenciado sob a **MIT License** - veja o arquivo [LICENSE](LICE
 
 ---
 
-## 📊 Estatísticas do Projeto
+## � Changelog
 
-- **Linhas de Código**: ~15,000+
-- **Questões**: 175 (PT + EN)
-- **Arquivos**: 31
-- **Commits**: 100+
-- **Tempo de Desenvolvimento**: 4 semanas
-
----
-
-## 🔄 Changelog
+### v2.5.0 (2026-01-29) - 🤖 AI Update
+- ✨ **AI Study Assistant**: Chat multimodal com Gemini API
+- ✨ **Speech-to-Text**: Entrada de dúvidas por voz
+- ✨ **Text-to-Speech**: Leitura de respostas em voz alta
+- ✨ **Gemini 2.5 Flash Lite**: Modelo atualizado para máxima velocidade
 
 ### v2.0.0 (2026-01-29)
 - ✨ Adicionadas 47 novas questões (128 → 175)
@@ -433,16 +437,6 @@ Este projeto é licenciado sob a **MIT License** - veja o arquivo [LICENSE](LICE
 - ✅ 128 questões base
 - ✅ PWA funcional
 - ✅ Material de estudo integrado
-
----
-
-## 📞 Suporte
-
-Encontrou um bug ou tem uma sugestão?
-
-- 🐛 **Issues**: [GitHub Issues](https://github.com/seu-usuario/caip-210-exam-prep/issues)
-- 💬 **Discussões**: [GitHub Discussions](https://github.com/seu-usuario/caip-210-exam-prep/discussions)
-- 📧 **Email**: [seu-email@exemplo.com](mailto:seu-email@exemplo.com)
 
 ---
 
