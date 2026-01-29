@@ -1,9 +1,12 @@
 // AI Assistant - Gemini API Integration
 // Handles chat functionality and LLM communication
 
-// IMPORTANT: Replace with your actual Gemini API key
-// Get your key at: https://makersuite.google.com/app/apikey
-const GEMINI_API_KEY = 'AIzaSyBaPCai4iIjCMgwzEYmCc2ggv2-gCqbBts';
+// IMPORTANT: API Key is now loaded from config.js (local) or environment
+let GEMINI_API_KEY = typeof CONFIG !== 'undefined' ? CONFIG.GEMINI_API_KEY : 'MISSING_API_KEY';
+
+if (GEMINI_API_KEY === 'MISSING_API_KEY') {
+    console.warn('Gemini API Key missing! Check config.js');
+}
 
 const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent';
 

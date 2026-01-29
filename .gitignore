@@ -1,0 +1,23 @@
+# Local configuration
+exam-prep/config.js
+exam-prep/gcm-diagnose.log
+
+# Firebase
+.firebase/
+firebase-debug.log
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Node
+node_modules/
+npm-debug.log
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
